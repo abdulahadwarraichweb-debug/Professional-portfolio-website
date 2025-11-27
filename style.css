@@ -104,13 +104,34 @@ li {
   font-weight: 600;
   text-decoration: none;
   margin-right: 20px;
+  position: relative;
+  overflow: hidden;
   transition: all 0.3s ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 127, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
 }
 
 .btn:hover {
   background-color: transparent;
   color: limegreen;
   box-shadow: 0 0 15px limegreen;
+}
+
+.btn:hover::before {
+  width: 250px;
+  height: 250px;
 }
 
 /* ===== PROFILE IMAGE ===== */
@@ -170,6 +191,7 @@ li {
   color: #ccc;
   font-size: 18px;
 }
+
 /* ===== SKILLS SECTION ===== */
 .skills {
   background-color: #111;
@@ -182,7 +204,6 @@ li {
   color: limegreen;
   margin-bottom: 50px;
   font-weight: 700;
-  text-align: center;
 }
 
 .skills h5 {
@@ -213,17 +234,10 @@ li {
   transition: width 1.5s ease-in-out;
 }
 
-@keyframes fillProgress {
-  from { width: 0; }
-  to { width: var(--progress-width); }
-}
-
-
-
 /* ===== PORTFOLIO SECTION ===== */
 .portfolio h2 {
   text-align: center;
-  color: limegreen; /* optional, you can keep it same as other headings */
+  color: limegreen;
   font-size: 40px;
   margin-bottom: 50px;
   font-weight: 700;
@@ -259,22 +273,49 @@ li {
   margin-bottom: 15px;
 }
 
-.project-links {
-  margin-top: 10px;
+/* ===== VIEW PROJECT BUTTON ===== */
+.view-btn {
+  display: inline-block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px 0;
+  background-color: limegreen;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid limegreen;
+  box-shadow: 0 0 12px limegreen;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.project-links a {
+.view-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 127, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+}
+
+.view-btn:hover {
+  background-color: transparent;
   color: limegreen;
-  font-size: 24px;
-  margin: 0 10px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 20px limegreen;
 }
 
-.project-links a:hover {
-  color: #00ff7f;
-  transform: scale(1.2);
+.view-btn:hover::before {
+  width: 250px;
+  height: 250px;
 }
-
 
 /* ===== SERVICES SECTION ===== */
 .services {
@@ -420,133 +461,21 @@ li {
     display: none; /* hide menu on small screens */
   }
 }
-.form-message {
-  margin-top: 15px;
-  color: #00ff7f;
-  background: rgba(0, 255, 127, 0.1);
-  padding: 10px 15px;
-  border: 1px solid #00ff7f;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 500;
-  animation: popIn 0.3s ease;
-}
 
-@keyframes popIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-/* Smooth section reveal */
+/* ===== ANIMATIONS ===== */
 section, .project-card, .service-card {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
 }
+
 section.show, .project-card.show, .service-card.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Navbar background change */
 .navbar.scrolled {
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 4px 15px rgba(0, 255, 127, 0.2);
   transition: all 0.3s ease-in-out;
 }
-
-/* Button glow effect */
-.btn {
-  position: relative;
-  overflow: hidden;
-}
-.btn::before {
-  content: "";
-  position: absolute;
-  top: var(--yPos, 50%);
-  left: var(--xPos, 50%);
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, rgba(0, 255, 127, 0.5) 0%, transparent 80%);
-  border-radius: 50%;
-  transition: width 0.4s ease, height 0.4s ease;
-}
-.btn:hover::before {
-  width: 250px;
-  height: 250px;
-}
-
-/* Contact form message */
-.form-message {
-  margin-top: 15px;
-  color: #00ff7f;
-  background: rgba(0, 255, 127, 0.1);
-  padding: 10px 15px;
-  border: 1px solid #00ff7f;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 500;
-  animation: popIn 0.3s ease;
-}
-
-@keyframes popIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-/* ===== VIEW PROJECT BUTTON ===== */
-.view-btn {
-  display: inline-block;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px 0;
-  background-color: limegreen;
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 30px;
-  border: 2px solid limegreen;
-  box-shadow: 0 0 12px limegreen;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hover effect */
-.view-btn:hover {
-  background-color: transparent;
-  color: limegreen;
-  box-shadow: 0 0 20px limegreen;
-}
-
-/* Button glow animation on hover */
-.view-btn::before {
-  content: "";
-  position: absolute;
-  top: var(--yPos, 50%);
-  left: var(--xPos, 50%);
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, rgba(0, 255, 127, 0.4) 0%, transparent 70%);
-  border-radius: 50%;
-  transition: width 0.4s ease, height 0.4s ease;
-}
-
-.view-btn:hover::before {
-  width: 260px;
-  height: 260px;
-}
-
