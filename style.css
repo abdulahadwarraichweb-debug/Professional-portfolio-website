@@ -104,8 +104,6 @@ li {
   font-weight: 600;
   text-decoration: none;
   margin-right: 20px;
-  position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
 }
 
@@ -172,7 +170,6 @@ li {
   color: #ccc;
   font-size: 18px;
 }
-
 /* ===== SKILLS SECTION ===== */
 .skills {
   background-color: #111;
@@ -185,6 +182,7 @@ li {
   color: limegreen;
   margin-bottom: 50px;
   font-weight: 700;
+  text-align: center;
 }
 
 .skills h5 {
@@ -193,16 +191,15 @@ li {
   margin-bottom: 10px;
   font-weight: 500;
   text-align: left;
-  padding-left: 9%;
 }
 
 .progress {
   height: 25px;
   background-color: #1a1a1a;
   border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 255, 127, 0.2);
   overflow: hidden;
-  margin: 0 auto 20px;
-  width: 80%;
+  margin-bottom: 20px;
 }
 
 .progress-bar {
@@ -212,13 +209,21 @@ li {
   text-align: right;
   padding-right: 10px;
   line-height: 25px;
+  box-shadow: 0 0 15px limegreen;
   transition: width 1.5s ease-in-out;
 }
+
+@keyframes fillProgress {
+  from { width: 0; }
+  to { width: var(--progress-width); }
+}
+
+
 
 /* ===== PORTFOLIO SECTION ===== */
 .portfolio h2 {
   text-align: center;
-  color: limegreen;
+  color: limegreen; /* optional, you can keep it same as other headings */
   font-size: 40px;
   margin-bottom: 50px;
   font-weight: 700;
@@ -233,12 +238,14 @@ li {
 
 .project-card {
   background-color: #111;
+  color: white;
   padding: 20px;
   border-radius: 15px;
-  width: 300px;
-  text-align: center;
   box-shadow: 0 0 15px rgba(0, 255, 127, 0.2);
-  transition: 0.3s ease;
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .project-card:hover {
@@ -252,30 +259,72 @@ li {
   margin-bottom: 15px;
 }
 
-/* ===== FIXED VIEW PROJECT BUTTON ===== */
-.view-btn {
-  display: inline-block;
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px 0;
-  background-color: limegreen;
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 30px;
-  border: 2px solid limegreen;
-  box-shadow: 0 0 12px limegreen;
-  transition: 0.3s ease;
+.project-links {
+  margin-top: 10px;
 }
 
-.view-btn:hover {
-  background-color: transparent;
+.project-links a {
   color: limegreen;
-  box-shadow: 0 0 20px limegreen;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* ===== CONTACT ===== */
+.project-links a:hover {
+  color: #00ff7f;
+  transform: scale(1.2);
+}
+
+
+/* ===== SERVICES SECTION ===== */
+.services {
+  padding: 100px 9%;
+  background-color: #111;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 40px;
+  color: limegreen;
+  margin-bottom: 40px;
+}
+
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 280px;
+  transition: 0.3s;
+}
+
+.service-card i {
+  font-size: 40px;
+  color: limegreen;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.service-card p {
+  color: #bbb;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 255, 0, 0.3);
+}
+
+/* ===== CONTACT SECTION ===== */
 .contact {
   padding: 100px 9%;
   text-align: center;
@@ -309,7 +358,9 @@ li {
   background-color: transparent;
   color: white;
   border-radius: 8px;
+  outline: none;
   font-size: 16px;
+  resize: none;
 }
 
 .contact-form button {
@@ -317,8 +368,10 @@ li {
   color: black;
   padding: 12px;
   font-size: 16px;
+  border: none;
   border-radius: 40px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .contact-form button:hover {
@@ -335,7 +388,22 @@ li {
   color: #aaa;
 }
 
-/* ===== RESPONSIVE ===== */
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: limegreen;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 900px) {
   .home {
     flex-direction: column;
@@ -349,6 +417,136 @@ li {
   }
 
   .navbar ul {
-    display: none;
+    display: none; /* hide menu on small screens */
   }
 }
+.form-message {
+  margin-top: 15px;
+  color: #00ff7f;
+  background: rgba(0, 255, 127, 0.1);
+  padding: 10px 15px;
+  border: 1px solid #00ff7f;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Smooth section reveal */
+section, .project-card, .service-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+section.show, .project-card.show, .service-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar background change */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 255, 127, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Button glow effect */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: var(--yPos, 50%);
+  left: var(--xPos, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 127, 0.5) 0%, transparent 80%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.btn:hover::before {
+  width: 250px;
+  height: 250px;
+}
+
+/* Contact form message */
+.form-message {
+  margin-top: 15px;
+  color: #00ff7f;
+  background: rgba(0, 255, 127, 0.1);
+  padding: 10px 15px;
+  border: 1px solid #00ff7f;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* ===== VIEW PROJECT BUTTON ===== */
+.view-btn {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0;
+  background-color: limegreen;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid limegreen;
+  box-shadow: 0 0 12px limegreen;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.view-btn:hover {
+  background-color: transparent;
+  color: limegreen;
+  box-shadow: 0 0 20px limegreen;
+}
+
+/* Button glow animation on hover */
+.view-btn::before {
+  content: "";
+  position: absolute;
+  top: var(--yPos, 50%);
+  left: var(--xPos, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 127, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.view-btn:hover::before {
+  width: 260px;
+  height: 260px;
+}
+
